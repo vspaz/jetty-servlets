@@ -1,10 +1,10 @@
 package main;
 
-import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 import servlets.*;
+import servlets.servers.*;
 
 
 public class Main {
@@ -16,8 +16,9 @@ public class Main {
         ctx.addServlet(new ServletHolder(indexServlet), "/index");
 
         ctx.addServlet(new ServletHolder(new Contact()), "/contacts");
+        ctx.addServlet(new ServletHolder(new VM()), "/servers");
 
-        Server server = new Server(8080);
+        org.eclipse.jetty.server.Server server = new org.eclipse.jetty.server.Server(8080);
         server.setHandler(ctx);
 
         server.start();
