@@ -50,13 +50,13 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            <version>9.4.25.v20191220</version>
+            <version>9.4.9.v20180320</version>
         </dependency>
 
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
-            <version>9.4.25.v20191220</version>
+            <version>9.4.9.v20180320</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
