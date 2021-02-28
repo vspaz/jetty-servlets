@@ -8,10 +8,14 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class VM extends HttpServlet {
 
-    private final Gson gson = new Gson();
+    private final Gson gson = new GsonBuilder()
+            .serializeNulls()
+            .setPrettyPrinting()
+            .create();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
