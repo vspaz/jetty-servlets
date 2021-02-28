@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 
 public class VM extends HttpServlet {
 
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
