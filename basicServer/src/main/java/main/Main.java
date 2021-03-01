@@ -24,11 +24,11 @@ public class Main {
         ctx.addServlet(new ServletHolder(new VM()),      "/servers");
         return ctx;
     }
-    private static void startServer(ServletContextHandler ctxWithHandlers) throws Exception {
+    private static void startServer(ServletContextHandler ctx) throws Exception {
         int port = 8080;
         logger.info(String.format("try to start server at port %s", port));
         org.eclipse.jetty.server.Server server = new org.eclipse.jetty.server.Server(port);
-        server.setHandler(ctxWithHandlers);
+        server.setHandler(ctx);
         server.start();
         server.join();
     }
