@@ -12,7 +12,7 @@ public class Login extends HttpServlet {
     private static final String DEFAULT_PASS = "guest";
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String user = request.getParameter("user");
         if (user == null) {
             user = Login.DEFAULT_USER;
@@ -35,5 +35,9 @@ public class Login extends HttpServlet {
                 .append("    </form>\r\n")
                 .append("  </body>\r\n")
                 .append("</html>");
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        this.doGet(request, response);
     }
 }
