@@ -7,6 +7,7 @@ import org.eclipse.jetty.util.log.Log;
 import org.eclipse.jetty.util.log.Logger;
 import servlets.*;
 import servlets.servers.*;
+import servlets.tickets.TicketServlet;
 
 
 public class Main {
@@ -18,10 +19,11 @@ public class Main {
     }
     private static ServletContextHandler registerHandlers(ServletContextHandler ctx) {
         logger.info("registering handlers...");
-        ctx.addServlet(new ServletHolder(new Contact()), "/contacts");
-        ctx.addServlet(new ServletHolder(new Index()),   "/index");
-        ctx.addServlet(new ServletHolder(new Login()),   "/login");
-        ctx.addServlet(new ServletHolder(new VM()),      "/servers");
+        ctx.addServlet(new ServletHolder(new Contact()),       "/contacts");
+        ctx.addServlet(new ServletHolder(new Index()),         "/index");
+        ctx.addServlet(new ServletHolder(new Login()),         "/login");
+        ctx.addServlet(new ServletHolder(new VM()),            "/servers");
+        ctx.addServlet(new ServletHolder(new TicketServlet()), "/tickets");
         return ctx;
     }
     private static void startServer(ServletContextHandler ctx) throws Exception {
