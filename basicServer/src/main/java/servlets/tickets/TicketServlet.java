@@ -26,8 +26,7 @@ public class TicketServlet extends HttpServlet {
     private final Map<Integer, Ticket> ticketDatabase = new LinkedHashMap<>();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action = request.getParameter("action");
         if (action == null)
             action = "list";
@@ -146,8 +145,7 @@ public class TicketServlet extends HttpServlet {
         stream.write(attachment.getContents());
     }
 
-    private void listTickets(HttpServletResponse response)
-            throws ServletException, IOException {
+    private void listTickets(HttpServletResponse response) throws IOException {
         PrintWriter writer = this.writeHeader(response);
 
         writer.append("<h2>Tickets</h2>\r\n");
