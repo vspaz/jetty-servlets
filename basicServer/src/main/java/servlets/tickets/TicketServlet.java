@@ -49,8 +49,7 @@ public class TicketServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null)
             action = "list";
@@ -89,9 +88,7 @@ public class TicketServlet extends HttpServlet {
         this.writeFooter(writer);
     }
 
-    private void viewTicket(HttpServletRequest request,
-                            HttpServletResponse response)
-            throws ServletException, IOException {
+    private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idString = request.getParameter("ticketId");
         Ticket ticket = this.getTicket(idString, response);
         if (ticket == null)
@@ -124,9 +121,7 @@ public class TicketServlet extends HttpServlet {
         this.writeFooter(writer);
     }
 
-    private void downloadAttachment(HttpServletRequest request,
-                                    HttpServletResponse response)
-            throws ServletException, IOException {
+    private void downloadAttachment(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String idString = request.getParameter("ticketId");
         Ticket ticket = this.getTicket(idString, response);
         if (ticket == null)
@@ -188,8 +183,7 @@ public class TicketServlet extends HttpServlet {
         Part filePart = request.getPart("file1");
         if (filePart != null && filePart.getSize() > 0) {
             Attachment attachment = this.processAttachment(filePart);
-            if (attachment != null)
-                ticket.addAttachment(attachment);
+            ticket.addAttachment(attachment);
         }
 
         int id;
@@ -220,8 +214,7 @@ public class TicketServlet extends HttpServlet {
         return attachment;
     }
 
-    private Ticket getTicket(String idString, HttpServletResponse response)
-            throws ServletException, IOException {
+    private Ticket getTicket(String idString, HttpServletResponse response) throws IOException {
         if (idString == null || idString.length() == 0) {
             response.sendRedirect("tickets");
             return null;
