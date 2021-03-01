@@ -25,6 +25,14 @@ public class Login extends HttpServlet {
                 .append("    <title>Login</title>\r\n")
                 .append("  <head>\r\n")
                 .append("  <body>\r\n")
+                .append("    Hi, \r\n").append(user).append("<br></br>\r\n")
+                .append("    <form action=\"greeting\" method=\"POST\">\r\n")
+                .append("      Please enter your name: <br />\r\n")
+                .append("      <input type=\"text\" name=\"user\" ><br />\r\n")
+                .append("      Please enter your password: <br />\r\n")
+                .append("      <input type=\"text\" name=\"password\"/><br />\r\n")
+                .append("      <input type=\"submit\" value=\"Submit\"/>\r\n")
+                .append("    </form>\r\n")
                 .append("  </body>\r\n")
                 .append("</html>");
     }
