@@ -18,7 +18,7 @@ public class VM extends HttpServlet {
             .create();
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Description serverDescription = Description.CreateDescription();
         serverDescription.setId(1);
         serverDescription.setName("vm");

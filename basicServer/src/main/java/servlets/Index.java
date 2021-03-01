@@ -13,7 +13,7 @@ public class Index extends HttpServlet {
     public static final Logger logger = Log.getLogger(Index.class.getName());
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.info(
                 String.format(
                         "%s.%s called",

@@ -35,8 +35,7 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
         if (user.equals("") || password.equals("")) {
             this.doGet(request, response);
-        }
-        else {
+        } else {
             response.setContentType("text/html");
             response.setCharacterEncoding("UTF-8");
             PrintWriter writer = response.getWriter();
