@@ -12,7 +12,7 @@ public class Ticket {
 
     private String body;
 
-    private Map<String, Attachment> attachments = new LinkedHashMap<>();
+    private final Map<String, Attachment> attachments = new LinkedHashMap<>();
 
     public String getCustomerName() {
         return customerName;

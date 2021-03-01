@@ -64,8 +64,7 @@ public class TicketServlet extends HttpServlet {
         }
     }
 
-    private void showTicketForm(HttpServletResponse response)
-            throws ServletException, IOException {
+    private void showTicketForm(HttpServletResponse response) throws IOException {
         PrintWriter writer = this.writeHeader(response);
 
         writer.append("<h2>Create a Ticket</h2>\r\n");
@@ -88,7 +87,7 @@ public class TicketServlet extends HttpServlet {
         this.writeFooter(writer);
     }
 
-    private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String idString = request.getParameter("ticketId");
         Ticket ticket = this.getTicket(idString, response);
         if (ticket == null)
