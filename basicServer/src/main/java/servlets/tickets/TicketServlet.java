@@ -233,8 +233,7 @@ public class TicketServlet extends HttpServlet {
         }
     }
 
-    private PrintWriter writeHeader(HttpServletResponse response)
-            throws ServletException, IOException {
+    private PrintWriter writeHeader(HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
