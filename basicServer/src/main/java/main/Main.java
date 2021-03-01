@@ -10,21 +10,25 @@ import servlets.servers.*;
 
 
 public class Main {
+    private static final Logger logger = Log.getRootLogger();
     public static void main(String[] args) throws Exception {
-        Logger logger = Log.getRootLogger();
-        logger.info("starting server...");
         ServletContextHandler ctx = new ServletContextHandler(ServletContextHandler.SESSIONS);
-
-        Index indexServlet = new Index();
-
+        ServletContextHandler ctxWithHandlers = registerHandlers(ctx);
+        startServer(ctxWithHandlers);
+    }
+    private static ServletContextHandler registerHandlers(ServletContextHandler ctx) {
+        logger.info("registering handlers...");
         ctx.addServlet(new ServletHolder(new Contact()), "/contacts");
-        ctx.addServlet(new ServletHolder(indexServlet),  "/index");
+        ctx.addServlet(new ServletHolder(new Index()),   "/index");
+        ctx.addServlet(new ServletHolder(new Login()),   "/login");
         ctx.addServlet(new ServletHolder(new VM()),      "/servers");
-        ctx.addServlet(new ServletHolder(indexServlet),  "/");
-
-        org.eclipse.jetty.server.Server server = new org.eclipse.jetty.server.Server(8080);
-        server.setHandler(ctx);
-
+        return ctx;
+    }
+    private static void startServer(ServletContextHandler ctxWithHandlers) throws Exception {
+        int port = 8080;
+        logger.info(String.format("try to start server at port %s", port));
+        org.eclipse.jetty.server.Server server = new org.eclipse.jetty.server.Server(port);
+        server.setHandler(ctxWithHandlers);
         server.start();
         server.join();
     }
